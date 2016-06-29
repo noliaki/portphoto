@@ -39,14 +39,19 @@ gem 'erb2haml'
 # Google API Client
 gem 'google-api-client', '0.9'
 
+gem 'kaminari', '~> 0.17.0'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'better_errors'
+  gem 'better_errors', '~> 2.1'
   gem 'pry-rails'
   gem 'bullet'
-  gem 'annotate'
+  gem 'annotate', '~> 2.7'
   gem 'quiet_assets'
+  gem 'binding_of_caller', '~> 0.7.2'
+  gem 'ridgepole', '~> 0.6.4'
+  gem 'factory_girl_rails', '~> 4.7'
 end
 
 group :development do
