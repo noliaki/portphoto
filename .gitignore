@@ -21,3 +21,6 @@
 
 # Ignore vagrant settings
 .vagrant
+
+# Ignore uploaded images
+/public/uploads

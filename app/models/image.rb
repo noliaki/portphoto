@@ -2,12 +2,11 @@
 #
 # Table name: images
 #
-#  id            :integer          not null, primary key
-#  origin_path   :string
-#  thumnail_path :string
-#  user_id       :integer
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
+#  id         :integer          not null, primary key
+#  image      :string
+#  user_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 # Indexes
 #
@@ -15,7 +14,7 @@
 #
 
 class Image < ActiveRecord::Base
-	belongs_to :user
+  belongs_to :user
 
-	mount_uploader :path, ImageUploader
+  mount_uploader :image, ImageUploader
 end
