@@ -46,7 +46,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   def filename
     extname = file.try(:extension) || original_filename.rpartition('.').last
-    "#{[version_name, model.id].compact.join('-')}.#{extname}" if original_filename
+    "#{model.class.to_s.underscore}-#{model.id}.#{extname}" if original_filename
   end
 
 end
