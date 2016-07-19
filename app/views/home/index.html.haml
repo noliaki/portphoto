@@ -9,3 +9,7 @@
   = form_for @image do |f|
     = f.file_field :file
     = f.submit 'upload'
+
+
+- @images.each do |image|
+  = image_tag image.file.thumb.url
