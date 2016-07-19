@@ -3,7 +3,9 @@
 # Table name: images
 #
 #  id         :integer          not null, primary key
-#  image      :string
+#  title      :string
+#  comment    :string
+#  file       :string
 #  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -16,5 +18,5 @@
 class Image < ActiveRecord::Base
   belongs_to :user
 
-  mount_uploader :image, ImageUploader
+  mount_uploader :file, ImageUploader
 end
