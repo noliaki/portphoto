@@ -24,3 +24,6 @@
 
 # Ignore uploaded images
 /public/uploads
+
+# Ignore node modules
+node_modules

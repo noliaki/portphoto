@@ -1,0 +1,8 @@
+.l-header
+  %h1.l-header__logo.harmattan portphoto
+  .l-header__sign-actions
+    - unless user_signed_in?
+      = link_to new_user_registration_path, class: 'l-header__sign-actions__item' do
+        %span sign in
+      = link_to 'login', new_user_session_path, class: 'l-header__sign-actions__item'
+    = link_to 'logout', destroy_user_session_path, method: :delete, class: 'l-header__sign-actions__item'

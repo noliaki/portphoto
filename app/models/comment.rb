@@ -1,2 +1,21 @@
+# == Schema Information
+#
+# Table name: comments
+#
+#  id         :integer          not null, primary key
+#  content    :string
+#  image_id   :integer
+#  user_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+# Indexes
+#
+#  index_comments_on_image_id  (image_id)
+#  index_comments_on_user_id   (user_id)
+#
+
 class Comment < ActiveRecord::Base
+  belongs_to :user
+  belongs_to :image, counter_cache: :comments_count
 end

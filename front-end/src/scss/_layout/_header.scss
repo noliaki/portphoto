@@ -1,0 +1,25 @@
+.l-header {
+  $color-header: darken($color-body, 5%);
+
+  display: flex;
+  padding: 0 $size-gutter;
+  background: {
+    color: rgba($color-header, 0.8);
+  }
+  border-bottom: 1px solid darken($color-header, 5%);
+
+  &__logo {
+  }
+
+  &__sign-actions {
+    display: flex;
+    align-items: stretch;
+    margin-left: auto;
+
+    &__item {
+      display: flex;
+      align-items: center;
+      margin-left: 10px;
+    }
+  }
+}

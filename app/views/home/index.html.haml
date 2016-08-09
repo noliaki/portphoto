@@ -1,15 +1,40 @@
-= link_to 'sign in', new_user_registration_path
-= link_to 'logout', destroy_user_session_path, method: :delete
-= link_to 'login', new_user_session_path
-
 - if user_signed_in?
   = current_user.email
-  = current_user.images
 
-  = form_for @image do |f|
-    = f.file_field :file
-    = f.submit 'upload'
+  -# = form_for @image do |f|
+  -#   = f.file_field :file
+  -#   = f.submit 'upload'
+  -#   = f.text_field :title
+  -#   = f.text_field :description
 
+#image-app
+  .p-boxes
+    %image-component{'v-for': '(image, index) in images', ':image': 'image', ':index': 'index'}
 
-- @images.each do |image|
-  = image_tag image.file.thumb.url
+  %image-detail-component{':selected-image': 'selectedImage', ':has-selected-image': 'hasSelectedImage', 'v-show': 'hasSelectedImage'}
+
+%script{'type': 'x-template', 'id': 'image-template'}
+  .p-box{'@click.stop.prevent': 'onSelectImage(index)'}
+    .p-image
+      .p-image__file
+        %img{':src': 'image.thumb_url', ':alt': 'image.title'}
+      .p-star
+        %i.fa.fa-star.p-star__button{'@click.stop.prevent': 'onSelectImage(index)'}
+        %span.p-star__count {{ image.stars_count }}
+
+%script{'type': 'x-template', 'id': 'image-detail-template'}
+  %transition{'name': 'fade'}
+    .modal{}
+      .modal-bg{'@click': 'releaseIndex'}
+      .modal-content
+        %img{':src': 'selectedImage.url', ':alt': 'selectedImage.title'}/
+        %p {{ selectedImage.title }}
+        %p {{ selectedImage.description }}
+        %p {{ selectedImage.comments_count }}
+        %input{:type => "text", 'v-model': 'commentContent'}
+        .comments
+          %p{'v-for': '(comment, index) in selectedImage.comments'}
+            {{ comment.content }}
+          .post-commnet{'@click': 'onClickPost', ':class': '{ "is-posting": isPosting }'}
+            post comment
+        %p{'@click': 'releaseIndex'} ✕

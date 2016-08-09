@@ -1,0 +1,83 @@
+.p-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: $size-gutter;
+}
+
+.p-box {
+  $hover-color: darken($color-body, 14%);
+  padding: $size-gutter / 2;
+  border: 1px solid rgba($hover-color, 0);
+  transition: all 0.1s linear;
+
+  &:hover {
+    background: {
+      color: darken($color-body, 7%);
+    }
+    border: {
+      color: rgba($hover-color, 1);
+    }
+
+    .p-star {
+      display: block;
+    }
+  }
+}
+
+.p-image {
+  position: relative;
+}
+
+.p-star {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 0 0.5em;
+  background: rgba(#fff, 0.8);
+
+  &__button {
+    cursor: pointer;
+  }
+}
+
+.post-comment.is-posting {
+  color: #f0f0f0;
+}
+
+.modal {
+  transition: opacity 0.2s linear;
+}
+
+.modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: {
+    color: rgba(#000, 0.8);
+  }
+}
+
+.modal-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 80%;
+  max-width: 600px;
+  margin: 50px auto;
+  background: #fff;
+}
+
+// .fade-transition {
+//   transition: all 3s linear;
+// }
+
+.fade-enter-active,
+.fade-leave-active {
+  opacity: 0;
+}

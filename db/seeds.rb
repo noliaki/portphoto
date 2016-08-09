@@ -5,4 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.create!(id: 1, email: 'test@example.com', password: 'test@example.com')
+User.create(id: 1, email: 'test@example.com', password: 'test@example.com')
+
+500.times do |index|
+  Image.create(
+    user_id: 1,
+    title: "TITLE: #{index}",
+    description: "DESCRIPTION: #{index}",
+    file: open("#{Rails.root}/public/uploads/image/seed/photo-#{(index % 3) + 1}.jpg")
+  )
+end

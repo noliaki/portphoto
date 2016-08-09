@@ -11,15 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160719150008) do
+ActiveRecord::Schema.define(version: 20160722112532) do
 
-  create_table "images", force: :cascade do |t|
-    t.string   "title"
-    t.string   "comment"
-    t.string   "file"
+  create_table "comments", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "image_id"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["image_id"], name: "index_comments_on_image_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "images", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "file"
+    t.integer  "user_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "comments_count", default: 0
+    t.integer  "stars_count",    default: 0
   end
 
   add_index "images", ["user_id"], name: "index_images_on_user_id"
@@ -28,6 +41,16 @@ ActiveRecord::Schema.define(version: 20160719150008) do
     t.integer "image_id", null: false
     t.integer "tag_id",   null: false
   end
+
+  create_table "stars", force: :cascade do |t|
+    t.integer  "image_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "stars", ["image_id"], name: "index_stars_on_image_id"
+  add_index "stars", ["user_id"], name: "index_stars_on_user_id"
 
   create_table "tags", force: :cascade do |t|
     t.string   "name",                            null: false

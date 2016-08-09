@@ -6,7 +6,21 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   root to: "home#index"
-  resources :images
+
+  # for api
+  namespace :api, { format: 'json' } do
+    namespace :v1 do
+      resources :images do
+        member do
+          post 'stars', action: 'toggle_starred'
+
+          resources :comments, shallow: true
+        end
+      end
+      resources :tags, only: [:create, :update, :destroy]
+      resources :stars, only: [:create, :update, :destroy]
+    end
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
