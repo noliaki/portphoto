@@ -34,12 +34,12 @@ export const postComment = ({ commit, state }, comment) => {
     }
   }).then(
     (res) => {
-      console.log(res)
+      console.log(`succsess:${res}`)
       commit('SUCCESS_POST_COMMENT')
     },
     (error) => {
-      console.log(error)
-      commit('SUCCESS_POST_COMMENT')
+      console.log(`error:${error}`)
+      commit('FAIL_POST_COMMENT')
     }
   )
 }

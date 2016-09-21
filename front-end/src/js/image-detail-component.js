@@ -23,6 +23,10 @@ export default {
         this.releaseIndex()
       },
       onClickPost () {
+        if (!this.commentContent) {
+          alert('入力してね');
+          return;
+        }
         this.postComment(this.commentContent)
       }
     },

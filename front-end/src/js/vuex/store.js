@@ -8,18 +8,24 @@ Vue.use(Vuex)
 const state = {
   images: [],
   selectedIndex: null,
-  
+
 }
 
 const mutations = {
   SET_IMAGES (state, images) {
     state.images = images
   },
-  IMAGE_SELECTED (stete, index) {
+  IMAGE_SELECTED (state, index) {
     state.selectedIndex = index
   },
   RELEASE_INDEX (state) {
     state.selectedIndex = null
+  },
+  SUCCESS_POST_COMMENT (state) {
+
+  },
+  FAIL_POST_COMMENT (state) {
+    
   }
 }
 
